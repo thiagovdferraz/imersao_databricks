@@ -5,4 +5,11 @@ Antes de partir para o databricks, fizemos ingestão de dados no supabase. Lá t
 
 ### Fivetran
 Faz a ingestão de dados sem usar python.
-Dentro do databricks criamos uma nova ingestão Postgres e somos resdirecionados para o Fivetran, conta gratuita.
+Dentro do databricks criamos uma nova ingestão Postgres e somos redirecionados para o Fivetran, conta gratuita.
+
+### Databricks
+* Criação Catalog *lakehouse*
+* Criação das tabelas: *usando notebook*
+* Criação das tabelas via api (bitcoin e yahoo finance): *usando notebook*
+* Criação de Jobs
+* Criação de Pipeline Lakeflow (tabelas para camada bronze)
