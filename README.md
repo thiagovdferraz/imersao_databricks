@@ -7,6 +7,11 @@ Antes de partir para o databricks, fizemos ingestão de dados no supabase. Lá t
 Faz a ingestão de dados sem usar python.
 Dentro do databricks criamos uma nova ingestão Postgres e somos redirecionados para o Fivetran, conta gratuita.
 
+### Erathos
+Ferramenta de ingestão de dados entre banco e databricks. A única empresa brasileira certificada pela databricks.
+Substitui o papel da Fivetran.
+Fazer teste posteriormente.
+
 ### Databricks
 * Criação Catalog *lakehouse*
 * Criação das tabelas: *usando notebook*
