@@ -4,7 +4,7 @@
 -- Fonte: silver.fact_transaction_assets + silver.fact_quotation_assets + silver.dim_clientes
 -- =====================================================
 
-CREATE OR REFRESH STREAMING TABLE silver.fact_transaction_revenue
+CREATE OR REFRESH STREAMING TABLE lakehouse.silver.fact_transaction_revenue
 (
   CONSTRAINT gross_value_positivo EXPECT (gross_value > 0) ON VIOLATION DROP ROW,
   CONSTRAINT fee_revenue_positivo EXPECT (fee_revenue > 0) ON VIOLATION DROP ROW,
@@ -53,9 +53,9 @@ AS SELECT
   
   current_timestamp() as processed_at
 
-FROM STREAM(silver.fact_transaction_assets) t
-INNER JOIN STREAM(silver.fact_quotation_assets) q
+FROM STREAM(lakehouse.silver.fact_transaction_assets) t
+INNER JOIN STREAM(lakehouse.silver.fact_quotation_assets) q
   ON t.asset_symbol = q.asset_symbol 
   AND t.data_hora_aproximada = q.data_hora_aproximada
-INNER JOIN STREAM(silver.dim_clientes) c
+INNER JOIN STREAM(lakehouse.silver.dim_clientes) c
   ON t.cliente_id = c.customer_id

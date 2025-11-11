@@ -1,4 +1,4 @@
-CREATE OR REFRESH STREAMING TABLE silver.fact_quotation_assets
+CREATE OR REFRESH STREAMING TABLE lakehouse.silver.fact_quotation_assets
 (
   CONSTRAINT preco_positivo EXPECT (preco > 0) ON VIOLATION DROP ROW,
   CONSTRAINT horario_coleta_valido EXPECT (timestamp_cotacao <= current_timestamp()) ON VIOLATION DROP ROW,
@@ -25,7 +25,7 @@ FROM (
     preco,
     moeda,
     horario_coleta
-  FROM STREAM(bronze.quotation_btc)
+  FROM STREAM(lakehouse.bronze.bitcoin)
   
   UNION ALL
   
@@ -34,5 +34,5 @@ FROM (
     preco,
     moeda,
     horario_coleta
-  FROM STREAM(bronze.quotation_yfinance)
+  FROM STREAM(lakehouse.bronze.yfinance)
 )

@@ -4,7 +4,7 @@
 -- Fonte: bronze.transaction_btc + bronze.transaction_commodities
 -- =====================================================
 
-CREATE OR REFRESH STREAMING TABLE silver.fact_transaction_assets
+CREATE OR REFRESH STREAMING TABLE lakehouse.silver.fact_transaction_assets
 (
   CONSTRAINT quantidade_positiva EXPECT (quantidade > 0) ON VIOLATION DROP ROW,
   CONSTRAINT data_hora_valida EXPECT (data_hora IS NOT NULL) ON VIOLATION DROP ROW,
@@ -47,7 +47,7 @@ FROM (
     mercado,
     arquivo_origem,
     importado_em
-  FROM STREAM(bronze.transaction_btc)
+  FROM STREAM(lakehouse.bronze.sales_btc)
   
   UNION ALL
   
@@ -65,5 +65,5 @@ FROM (
     mercado,
     arquivo_origem,
     importado_em
-  FROM STREAM(bronze.transaction_commodities)
+  FROM STREAM(lakehouse.bronze.sales_commodities)
 )

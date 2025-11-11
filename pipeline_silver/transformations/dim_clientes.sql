@@ -4,7 +4,7 @@
 -- Fonte: bronze.customers
 -- =====================================================
 
-CREATE OR REFRESH STREAMING TABLE silver.dim_clientes
+CREATE OR REFRESH STREAMING TABLE lakehouse.silver.dim_clientes
 (
   CONSTRAINT customer_id_nao_nulo EXPECT (customer_id IS NOT NULL) ON VIOLATION DROP ROW,
   CONSTRAINT segmento_valido EXPECT (segmento IN ('Financeiro', 'Indústria', 'Varejo', 'Tecnologia')) ON VIOLATION DROP ROW,
@@ -27,4 +27,4 @@ AS SELECT
   cidade,
   CAST(created_at AS TIMESTAMP) as created_at,
   current_timestamp() as processed_at
-FROM STREAM(bronze.customers)
+FROM STREAM(lakehouse.bronze.customers)
