@@ -17,4 +17,4 @@ Fazer teste posteriormente.
 * Criação das tabelas: *usando notebook*
 * Criação das tabelas via api (bitcoin e yahoo finance): *usando notebook*
 * Criação de Jobs
-* Criação de Pipeline Lakeflow (tabelas para camada bronze)
+* Criação de Pipeline Lakeflow (tabelas para camada bronze, silver e gold)
